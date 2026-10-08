@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build/
+*.log
+.env
+firmware/config.h
+ml-service/model.pkl
+__pycache__/
+*.pyc
+.DS_Store
