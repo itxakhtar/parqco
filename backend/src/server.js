@@ -9,6 +9,9 @@ const { setDemoMode } = require('./demoSimulator');
 const { router: adminRouter, ensureAdmin } = require('./routes/admin');
 
 const app = express();
+// Behind Render's proxy every request carries X-Forwarded-For; without this,
+// express-rate-limit throws ERR_ERL_UNEXPECTED_X_FORWARDED_FOR on first request.
+app.set('trust proxy', 1);
 app.use(cors({ origin: config.corsOrigin }));
 app.use(express.json({ limit: '100kb' }));
 

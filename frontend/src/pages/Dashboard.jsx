@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../api.js';
 import { getSocket } from '../socket.js';
 
@@ -27,6 +28,19 @@ export default function Dashboard() {
 
   return (
     <div>
+      <section className="hero">
+        <div className="hero-in">
+          <h1>Find your spot before you arrive 🚗</h1>
+          <p>Live sensor updates from the IUB campus parking lot, with AI predictions for the hours ahead — no more circling the block.</p>
+          <div className="chips">
+            <span className="chip"><span className="dot" />LIVE · sensors online</span>
+            {stats && <span className="chip">🅿️ {stats.available} of {stats.total} bays free</span>}
+            {stats && <span className="chip">📊 {stats.occupancyPct}% full right now</span>}
+            <Link className="chip" to="/location">📍 View location →</Link>
+          </div>
+        </div>
+      </section>
+
       <h2>Live Parking Map</h2>
       {stats && (
         <div className="statrow">
@@ -53,6 +67,14 @@ export default function Dashboard() {
           </div>
         </div>
       ))}
+
+      <div className="photocard">
+        <img src="/images/garage.jpg" alt="Covered parking deck" />
+        <div className="pc-in">
+          <h3>Covered deck — Zone A</h3>
+          <p>Shaded bays close to the main gate. Every bay is watched by an ESP32 + HC-SR04 sensor, so what you see here is what is actually free.</p>
+        </div>
+      </div>
     </div>
   );
 }

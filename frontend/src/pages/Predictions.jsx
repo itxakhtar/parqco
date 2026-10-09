@@ -34,7 +34,7 @@ export default function Predictions() {
               <XAxis dataKey="time" tick={{ fontSize: 10 }} interval={3} />
               <YAxis unit="%" domain={[0, 100]} />
               <Tooltip />
-              <Bar dataKey="occupancy" name="Occupancy %" fill="#4f7cff" />
+              <Bar dataKey="occupancy" name="Occupancy %" fill="#0d9488" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
           <p className="muted">Generated {new Date(data.generatedAt).toLocaleString()} · model: RandomForest on historical sensor data</p>

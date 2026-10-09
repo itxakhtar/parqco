@@ -28,21 +28,30 @@ export default function Login() {
   };
 
   return (
-    <div className="card narrow">
-      <h2>{mode === 'login' ? 'Welcome back' : 'Create account'}</h2>
-      <div className="tabs">
-        <button className={mode === 'login' ? 'active' : ''} onClick={() => setMode('login')}>Login</button>
-        <button className={mode === 'register' ? 'active' : ''} onClick={() => setMode('register')}>Register</button>
+    <div className="loginwrap">
+      <div className="loginphoto">
+        <div className="lp-in">
+          <h3>Park smarter at IUB 🅿️</h3>
+          <p>See free bays in real time, book ahead, and let AI tell you when the lot fills up.</p>
+        </div>
       </div>
-      <form onSubmit={submit} className="form">
-        {mode === 'register' && (
-          <input placeholder="Full name" value={name} onChange={(e) => setName(e.target.value)} required />
-        )}
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password (min 6 chars)" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        {error && <div className="err">{error}</div>}
-        <button type="submit">{mode === 'login' ? 'Login' : 'Register'}</button>
-      </form>
+      <div className="loginform">
+        <h2>{mode === 'login' ? 'Welcome back 👋' : 'Create account'}</h2>
+        <p className="muted">PARQCO — Smart Parking, The Islamia University of Bahawalpur</p>
+        <div className="tabs">
+          <button className={mode === 'login' ? 'active' : ''} onClick={() => setMode('login')}>Login</button>
+          <button className={mode === 'register' ? 'active' : ''} onClick={() => setMode('register')}>Register</button>
+        </div>
+        <form onSubmit={submit} className="form">
+          {mode === 'register' && (
+            <input placeholder="Full name" value={name} onChange={(e) => setName(e.target.value)} required />
+          )}
+          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input type="password" placeholder="Password (min 6 chars)" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          {error && <div className="err">{error}</div>}
+          <button type="submit">{mode === 'login' ? 'Login' : 'Register'}</button>
+        </form>
+      </div>
     </div>
   );
 }

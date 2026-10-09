@@ -5,6 +5,7 @@ import Login from './pages/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Booking from './pages/Booking.jsx';
 import Predictions from './pages/Predictions.jsx';
+import Location from './pages/Location.jsx';
 import Admin from './pages/Admin.jsx';
 
 export const AuthCtx = createContext(null);
@@ -44,13 +45,14 @@ export default function App() {
   return (
     <AuthCtx.Provider value={{ user, setUser, loading }}>
       <header className="topbar">
-        <Link to="/" className="brand">🅿️ PARQCO</Link>
+        <Link to="/" className="brand">PARQ<em>CO</em></Link>
         <nav>
           {user ? (
             <>
               <Link to="/">Live Map</Link>
               <Link to="/bookings">Bookings</Link>
               <Link to="/predictions">AI Predictions</Link>
+              <Link to="/location">Location</Link>
               {user.role === 'admin' && <Link to="/admin">Admin</Link>}
               <span className="who">{user.name}</span>
               <button className="linkbtn" onClick={logout}>Logout</button>
@@ -66,10 +68,11 @@ export default function App() {
           <Route path="/" element={<Protected><Dashboard /></Protected>} />
           <Route path="/bookings" element={<Protected><Booking /></Protected>} />
           <Route path="/predictions" element={<Protected><Predictions /></Protected>} />
+          <Route path="/location" element={<Protected><Location /></Protected>} />
           <Route path="/admin" element={<Protected admin><Admin /></Protected>} />
         </Routes>
       </main>
-      <footer className="foot">PARQCO — Smart Parking Management System with AI Predictions · FYP 2026</footer>
+      <footer className="foot">PARQCO — Smart Parking Management System with AI Predictions · Developed by Muhammad Akhtar · The Islamia University of Bahawalpur · FYP 2026</footer>
     </AuthCtx.Provider>
   );
 }
